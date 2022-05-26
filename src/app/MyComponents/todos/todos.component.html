@@ -1,0 +1,25 @@
+<!-- <h1 class="text-center mb-2">Todo App</h1> -->
+<app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+
+<!-- <ul *ngFor="let todo of todos">
+    <li>{{todo.sno}} - {{todo.title}} - {{todo.desc}}</li>
+</ul> -->
+<h3 class="text-center">My Todos</h3>
+
+
+    <!-- this is the ng if block in angular-->
+    <div *ngIf="this.todos.length === 0; else elseBlock" class="my-3 text-center">No Todos to display!!</div>
+    
+    <!-- this is the ng else block in angular-->
+    <ng-template #elseBlock>
+        <div *ngFor="let todo of todos; index as i">
+            <app-todo-item
+            [todo]="todo"
+            [i]="i"
+            (todoDelete)="deleteTodo($event)"
+      (todoCheckBox)="toggleTodo($event)"
+      ></app-todo-item>
+    </div>
+</ng-template>
+
+
